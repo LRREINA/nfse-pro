@@ -1,5 +1,4 @@
-
-import { Building2, Smartphone, Monitor, Cloud } from 'lucide-react';
+import { Building2, Smartphone, Monitor, Cloud, Shield } from 'lucide-react';
 
 const Integrations = () => {
   const integrations = [

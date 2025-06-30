@@ -46,9 +46,11 @@ const Header = () => {
                 Login
               </Button>
             </Link>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Teste Grátis
-            </Button>
+            <Link to="/teste-gratis">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                Teste Grátis
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,9 +82,11 @@ const Header = () => {
                     Login
                   </Button>
                 </Link>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                  Teste Grátis
-                </Button>
+                <Link to="/teste-gratis">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    Teste Grátis
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

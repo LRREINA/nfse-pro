@@ -1,6 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Check, FileText, Clock, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -21,9 +22,11 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
-              Teste Grátis por 15 Dias
-            </Button>
+            <Link to="/teste-gratis">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+                Teste Grátis por 15 Dias
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg">
               Ver Demonstração
             </Button>

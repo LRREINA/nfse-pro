@@ -1,6 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Pricing = () => {
   const plans = [
@@ -108,15 +108,17 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <Button
-                className={`w-full py-3 ${
-                  plan.highlighted
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                    : 'bg-gray-900 hover:bg-gray-800 text-white'
-                }`}
-              >
-                {plan.buttonText}
-              </Button>
+              <Link to="/checkout">
+                <Button
+                  className={`w-full py-3 ${
+                    plan.highlighted
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                      : 'bg-gray-900 hover:bg-gray-800 text-white'
+                  }`}
+                >
+                  {plan.buttonText}
+                </Button>
+              </Link>
             </div>
           ))}
         </div>

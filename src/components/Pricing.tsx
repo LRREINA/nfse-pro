@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,8 @@ const Pricing = () => {
         'Suporte via email'
       ],
       highlighted: false,
-      buttonText: 'Começar agora'
+      buttonText: 'Começar agora',
+      planId: 'basic'
     },
     {
       name: 'Profissional',
@@ -36,7 +38,8 @@ const Pricing = () => {
         'Suporte prioritário'
       ],
       highlighted: true,
-      buttonText: 'Mais Popular'
+      buttonText: 'Mais Popular',
+      planId: 'professional'
     },
     {
       name: 'Enterprise',
@@ -56,7 +59,8 @@ const Pricing = () => {
         'Onboarding personalizado'
       ],
       highlighted: false,
-      buttonText: 'Falar com vendas'
+      buttonText: 'Falar com vendas',
+      planId: 'enterprise'
     }
   ];
 
@@ -108,7 +112,7 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <Link to="/checkout">
+              <Link to={`/checkout?plan=${plan.planId}`}>
                 <Button
                   className={`w-full py-3 ${
                     plan.highlighted

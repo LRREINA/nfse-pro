@@ -1,13 +1,14 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CreditCard, Smartphone, DollarSign, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const CheckoutPage = () => {
+  const [searchParams] = useSearchParams();
   const [selectedPayment, setSelectedPayment] = useState('credit-card');
   const [formData, setFormData] = useState({
     cardNumber: '',
@@ -15,6 +16,29 @@ const CheckoutPage = () => {
     cvv: '',
     cardHolder: ''
   });
+
+  // Detectar o plano selecionado
+  const planParam = searchParams.get('plan') || 'basic';
+  
+  const plans = {
+    basic: {
+      name: 'Básico',
+      price: 'R$ 49,00',
+      value: 49.00
+    },
+    professional: {
+      name: 'Profissional', 
+      price: 'R$ 99,00',
+      value: 99.00
+    },
+    enterprise: {
+      name: 'Enterprise',
+      price: 'R$ 199,00', 
+      value: 199.00
+    }
+  };
+
+  const selectedPlan = plans[planParam as keyof typeof plans] || plans.basic;
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -77,6 +101,9 @@ const CheckoutPage = () => {
                     <span>E-mail: <strong>daniel.souza@acaruly.com.br</strong></span>
                   </div>
                   <div>CPF/CNPJ: <strong>93.879.219/0001-93</strong></div>
+                  <div className="mt-2">
+                    <span>Plano selecionado: <strong>{selectedPlan.name}</strong></span>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -186,7 +213,7 @@ const CheckoutPage = () => {
                     </div>
 
                     <Button className="w-full bg-gray-800 hover:bg-gray-900 text-white py-3">
-                      Pagar
+                      Pagar {selectedPlan.price}
                     </Button>
 
                     <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
@@ -201,6 +228,7 @@ const CheckoutPage = () => {
                     <p className="text-gray-600">
                       {selectedPayment === 'pix' ? 'Configure o pagamento via PIX' : 'Configure o pagamento via Boleto'}
                     </p>
+                    <p className="text-lg font-semibold mt-2">Valor: {selectedPlan.price}</p>
                   </div>
                 )}
 
@@ -215,72 +243,54 @@ const CheckoutPage = () => {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Dados de fatura</CardTitle>
+                <CardTitle className="text-lg font-semibold">Resumo do pedido</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="font-medium">Beneficiário:</span>
-                    <span>Prefeitura Municipal de Apresentação</span>
+                    <span className="font-medium">Plano:</span>
+                    <span>{selectedPlan.name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-medium">Endereço:</span>
-                    <span>Rua Bonnard</span>
+                    <span className="font-medium">Período:</span>
+                    <span>Mensal</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-medium">CNPJ:</span>
-                    <span>48.219.562/0001-67</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Fatura:</span>
-                    <span>117919</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Vencimento:</span>
-                    <span>15/07/2025</span>
+                    <span className="font-medium">Renovação:</span>
+                    <span>Automática</span>
                   </div>
                 </div>
 
                 <div className="border-t pt-4 space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span>(=) Valor do Documento:</span>
-                    <span>R$ 3.465.55</span>
+                    <span>{selectedPlan.price}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>(-) Desconto:</span>
-                    <span>R$ 0.00</span>
+                    <span>R$ 0,00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>(+) Outros Acréscimos:</span>
-                    <span>R$ 0.00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>(+) Correção:</span>
-                    <span>R$ 0.00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>(+) Juros:</span>
-                    <span>R$ 0.00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>(+) Mora/Multa:</span>
-                    <span>R$ 0.00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>(+) Encargos:</span>
-                    <span>R$ 278.33</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>(=) Parcelas:</span>
-                    <span>1 x R$ 3.733.88</span>
+                    <span>(+) Impostos:</span>
+                    <span>R$ 0,00</span>
                   </div>
                 </div>
 
                 <div className="border-t pt-4">
                   <div className="flex justify-between text-lg font-bold">
                     <span>Total a pagar:</span>
-                    <span>R$ 3.733,88</span>
+                    <span>{selectedPlan.price}</span>
                   </div>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                  <h4 className="font-semibold text-blue-900 mb-2">Benefícios inclusos:</h4>
+                  <ul className="text-sm text-blue-800 space-y-1">
+                    <li>• Emissão ilimitada de NFS-e</li>
+                    <li>• Integração com prefeituras</li>
+                    <li>• Envio automático por email</li>
+                    <li>• Suporte técnico</li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>

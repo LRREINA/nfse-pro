@@ -27,9 +27,11 @@ const Hero = () => {
                 Teste Grátis por 15 Dias
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg">
-              Ver Demonstração
-            </Button>
+            <Link to="/demonstracao">
+              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg">
+                Ver Demonstração
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">

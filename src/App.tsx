@@ -9,6 +9,7 @@ import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import FreeTrialPage from "./pages/FreeTrialPage";
+import DemoPage from "./pages/DemoPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/teste-gratis" element={<FreeTrialPage />} />
+          <Route path="/demonstracao" element={<DemoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

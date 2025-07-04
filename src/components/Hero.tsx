@@ -1,11 +1,8 @@
-
 import { Button } from '@/components/ui/button';
 import { Check, FileText, Clock, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const Hero = () => {
-  return (
-    <section id="inicio" className="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+  return <section id="inicio" className="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
       <div className="absolute inset-0 hero-pattern opacity-30"></div>
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="max-w-4xl mx-auto text-center">
@@ -41,7 +38,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center justify-center space-x-2 bg-white rounded-lg p-4 shadow-sm">
               <Clock className="text-green-600" size={20} />
-              <span className="text-gray-700 font-medium">Configuração em 5min</span>
+              <span className="text-gray-700 font-medium">Fácil de configurar</span>
             </div>
             <div className="flex items-center justify-center space-x-2 bg-white rounded-lg p-4 shadow-sm">
               <Shield className="text-blue-600" size={20} />
@@ -50,8 +47,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;

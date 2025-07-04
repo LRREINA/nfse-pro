@@ -1,11 +1,8 @@
-
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const CTA = () => {
-  return (
-    <section className="py-20 bg-gradient-to-br from-blue-600 to-green-600 relative overflow-hidden">
+  return <section className="py-20 bg-gradient-to-br from-blue-600 to-green-600 relative overflow-hidden">
       <div className="absolute inset-0 hero-pattern opacity-20"></div>
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="max-w-4xl mx-auto text-center text-white">
@@ -18,12 +15,12 @@ const CTA = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link to="/teste-gratis">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
                 Teste Grátis por 15 Dias
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 text-lg">
+            <Button size="lg" variant="outline" className="border-white hover:bg-white px-8 py-3 text-lg text-lime-600 font-semibold">
               Agendar Demonstração
             </Button>
           </div>
@@ -44,8 +41,6 @@ const CTA = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CTA;

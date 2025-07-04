@@ -34,7 +34,7 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="flex items-center justify-center space-x-2 bg-white rounded-lg p-4 shadow-sm">
               <FileText className="text-blue-600" size={20} />
-              <span className="text-gray-700 font-medium">Emissão Ilimitada</span>
+              <span className="text-gray-700 font-medium text-base">Emissão Ilimitada*</span>
             </div>
             <div className="flex items-center justify-center space-x-2 bg-white rounded-lg p-4 shadow-sm">
               <Clock className="text-green-600" size={20} />

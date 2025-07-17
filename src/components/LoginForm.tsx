@@ -41,7 +41,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">NF</span>
           </div>
-          <span className="text-2xl font-bold text-gray-900">NFSe Pro</span>
+          <span className="text-2xl font-bold text-gray-900">ORION - NFS-e</span>
         </div>
         <CardTitle className="text-2xl font-bold text-gray-900">Fazer Login</CardTitle>
         <CardDescription className="text-gray-600">

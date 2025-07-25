@@ -1,10 +1,9 @@
 import { 
   BarChart3, 
-  FileText, 
   Home, 
   PlusCircle, 
   Settings, 
-  ChevronDown 
+  ChevronRight 
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -20,14 +19,19 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { useState } from "react";
 
 export function AppSidebar() {
   const location = useLocation();
+  const [expandedMenus, setExpandedMenus] = useState<string[]>(['Relatórios']);
+
+  const toggleMenu = (title: string) => {
+    setExpandedMenus(prev => 
+      prev.includes(title) 
+        ? prev.filter(item => item !== title)
+        : [...prev, title]
+    );
+  };
 
   const menuItems = [
     {
@@ -66,42 +70,43 @@ export function AppSidebar() {
             <SidebarMenu>
               {menuItems.map((item) => {
                 if (item.items) {
+                  const isExpanded = expandedMenus.includes(item.title);
                   return (
-                    <Collapsible
-                      key={item.title}
-                      asChild
-                      defaultOpen={location.pathname.startsWith("/relatorios")}
-                    >
-                      <SidebarMenuItem>
-                        <CollapsibleTrigger asChild>
-                          <SidebarMenuButton tooltip={item.title}>
-                            {item.icon && <item.icon />}
-                            <span>{item.title}</span>
-                            <ChevronDown className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
-                          </SidebarMenuButton>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                  <Link 
-                                    to={subItem.url}
-                                    className={
-                                      location.pathname === subItem.url
-                                        ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                                        : ""
-                                    }
-                                  >
-                                    <span>{subItem.title}</span>
-                                  </Link>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
-                      </SidebarMenuItem>
-                    </Collapsible>
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton 
+                        onClick={() => toggleMenu(item.title)}
+                        tooltip={item.title}
+                        className="w-full"
+                      >
+                        {item.icon && <item.icon />}
+                        <span>{item.title}</span>
+                        <ChevronRight 
+                          className={`ml-auto transition-transform duration-200 ${
+                            isExpanded ? 'rotate-90' : ''
+                          }`} 
+                        />
+                      </SidebarMenuButton>
+                      {isExpanded && (
+                        <SidebarMenuSub>
+                          {item.items.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild>
+                                <Link 
+                                  to={subItem.url}
+                                  className={
+                                    location.pathname === subItem.url
+                                      ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                      : ""
+                                  }
+                                >
+                                  <span>{subItem.title}</span>
+                                </Link>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      )}
+                    </SidebarMenuItem>
                   );
                 }
 

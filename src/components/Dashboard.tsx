@@ -170,13 +170,9 @@ const Dashboard = () => {
                 <FileText className="mr-2" size={18} />
                 Consultar NFS-e
               </Button>
-              <Button 
-                variant="outline" 
-                className="w-full justify-start"
-                onClick={() => window.location.href = '/relatorios/faturamento'}
-              >
+              <Button variant="outline" className="w-full justify-start">
                 <Download className="mr-2" size={18} />
-                Relatório de Faturamento
+                Relatório Mensal
               </Button>
               <Button variant="outline" className="w-full justify-start">
                 <Clock className="mr-2" size={18} />

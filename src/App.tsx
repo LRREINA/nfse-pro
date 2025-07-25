@@ -10,7 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import FreeTrialPage from "./pages/FreeTrialPage";
 import DemoPage from "./pages/DemoPage";
-import RelatórioFaturamento from "./pages/RelatórioFaturamento";
+import RelatórioFaturamentoPage from "./pages/RelatórioFaturamentoPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +28,7 @@ const App = () => (
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/teste-gratis" element={<FreeTrialPage />} />
           <Route path="/demonstracao" element={<DemoPage />} />
-          <Route path="/relatorios/faturamento" element={<RelatórioFaturamento />} />
+          <Route path="/relatorios/faturamento" element={<RelatórioFaturamentoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

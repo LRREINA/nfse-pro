@@ -23,9 +23,7 @@ import { useState } from "react";
 
 export function AppSidebar() {
   const location = useLocation();
-  console.log("AppSidebar - Current location:", location.pathname);
   const [expandedMenus, setExpandedMenus] = useState<string[]>(['Relatórios']);
-  console.log("AppSidebar - Expanded menus:", expandedMenus);
 
   const toggleMenu = (title: string) => {
     setExpandedMenus(prev => 
@@ -52,19 +50,19 @@ export function AppSidebar() {
       items: [
         {
           title: "Faturamento por Serv",
-          url: "/relatorios/faturamento",
+          url: "/dashboard/relatorios/faturamento",
         },
         {
           title: "Clientes Rentáveis", 
-          url: "/relatorios/clientes-rentaveis",
+          url: "/dashboard/relatorios/clientes-rentaveis",
         },
         {
           title: "Projeções",
-          url: "/relatorios/projecoes", 
+          url: "/dashboard/relatorios/projecoes", 
         },
         {
           title: "Obrigações Fiscais",
-          url: "/relatorios/obrigacoes-fiscais",
+          url: "/dashboard/relatorios/obrigacoes-fiscais",
         },
       ],
     },
@@ -112,7 +110,6 @@ export function AppSidebar() {
                                       ? "bg-sidebar-accent text-sidebar-accent-foreground"
                                       : ""
                                   }
-                                  onClick={() => console.log("Clicking on:", subItem.url)}
                                 >
                                   <span>{subItem.title}</span>
                                 </Link>

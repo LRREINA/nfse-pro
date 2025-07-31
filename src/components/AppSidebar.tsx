@@ -40,7 +40,7 @@ export function AppSidebar() {
       icon: Home,
     },
     {
-      title: "Nova NFS-e",
+      title: "Nova NFS-e", 
       url: "/nova-nfse",
       icon: PlusCircle,
     },
@@ -49,14 +49,26 @@ export function AppSidebar() {
       icon: BarChart3,
       items: [
         {
-          title: "Faturamento",
+          title: "Faturamento por Serv",
           url: "/relatorios/faturamento",
+        },
+        {
+          title: "Clientes Rentáveis", 
+          url: "/relatorios/clientes-rentaveis",
+        },
+        {
+          title: "Projeções",
+          url: "/relatorios/projecoes", 
+        },
+        {
+          title: "Obrigações Fiscais",
+          url: "/relatorios/obrigacoes-fiscais",
         },
       ],
     },
     {
       title: "Configurações",
-      url: "/configuracoes",
+      url: "/configuracoes", 
       icon: Settings,
     },
   ];

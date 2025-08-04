@@ -1,9 +1,10 @@
 import { 
   BarChart3, 
+  FileText, 
   Home, 
   PlusCircle, 
   Settings, 
-  ChevronRight 
+  ChevronDown 
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -19,22 +20,14 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { useState } from "react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export function AppSidebar() {
   const location = useLocation();
-  const [expandedMenus, setExpandedMenus] = useState<string[]>(['Relatórios']);
-  
-  console.log("AppSidebar - Current location:", location.pathname);
-  console.log("AppSidebar - Expanded menus:", expandedMenus);
-
-  const toggleMenu = (title: string) => {
-    setExpandedMenus(prev => 
-      prev.includes(title) 
-        ? prev.filter(item => item !== title)
-        : [...prev, title]
-    );
-  };
 
   const menuItems = [
     {
@@ -43,7 +36,7 @@ export function AppSidebar() {
       icon: Home,
     },
     {
-      title: "Nova NFS-e", 
+      title: "Nova NFS-e",
       url: "/nova-nfse",
       icon: PlusCircle,
     },
@@ -52,26 +45,14 @@ export function AppSidebar() {
       icon: BarChart3,
       items: [
         {
-          title: "Faturamento por Serv",
-          url: "/dashboard/relatorios/faturamento",
-        },
-        {
-          title: "Clientes Rentáveis", 
-          url: "/dashboard/relatorios/clientes-rentaveis",
-        },
-        {
-          title: "Projeções",
-          url: "/dashboard/relatorios/projecoes", 
-        },
-        {
-          title: "Obrigações Fiscais",
-          url: "/dashboard/relatorios/obrigacoes-fiscais",
+          title: "Faturamento",
+          url: "/relatorios/faturamento",
         },
       ],
     },
     {
       title: "Configurações",
-      url: "/configuracoes", 
+      url: "/configuracoes",
       icon: Settings,
     },
   ];
@@ -85,43 +66,42 @@ export function AppSidebar() {
             <SidebarMenu>
               {menuItems.map((item) => {
                 if (item.items) {
-                  const isExpanded = expandedMenus.includes(item.title);
                   return (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton 
-                        onClick={() => toggleMenu(item.title)}
-                        tooltip={item.title}
-                        className="w-full"
-                      >
-                        {item.icon && <item.icon />}
-                        <span>{item.title}</span>
-                        <ChevronRight 
-                          className={`ml-auto transition-transform duration-200 ${
-                            isExpanded ? 'rotate-90' : ''
-                          }`} 
-                        />
-                      </SidebarMenuButton>
-                      {isExpanded && (
-                        <SidebarMenuSub>
-                          {item.items.map((subItem) => (
-                            <SidebarMenuSubItem key={subItem.title}>
-                              <SidebarMenuSubButton asChild>
-                                <Link 
-                                  to={subItem.url}
-                                  className={
-                                    location.pathname === subItem.url
-                                      ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                                      : ""
-                                  }
-                                >
-                                  <span>{subItem.title}</span>
-                                </Link>
-                              </SidebarMenuSubButton>
-                            </SidebarMenuSubItem>
-                          ))}
-                        </SidebarMenuSub>
-                      )}
-                    </SidebarMenuItem>
+                    <Collapsible
+                      key={item.title}
+                      asChild
+                      defaultOpen={location.pathname.startsWith("/relatorios")}
+                    >
+                      <SidebarMenuItem>
+                        <CollapsibleTrigger asChild>
+                          <SidebarMenuButton tooltip={item.title}>
+                            {item.icon && <item.icon />}
+                            <span>{item.title}</span>
+                            <ChevronDown className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
+                          </SidebarMenuButton>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <SidebarMenuSub>
+                            {item.items.map((subItem) => (
+                              <SidebarMenuSubItem key={subItem.title}>
+                                <SidebarMenuSubButton asChild>
+                                  <Link 
+                                    to={subItem.url}
+                                    className={
+                                      location.pathname === subItem.url
+                                        ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                        : ""
+                                    }
+                                  >
+                                    <span>{subItem.title}</span>
+                                  </Link>
+                                </SidebarMenuSubButton>
+                              </SidebarMenuSubItem>
+                            ))}
+                          </SidebarMenuSub>
+                        </CollapsibleContent>
+                      </SidebarMenuItem>
+                    </Collapsible>
                   );
                 }
 

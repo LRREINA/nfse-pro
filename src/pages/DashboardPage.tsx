@@ -7,6 +7,7 @@ import RelatórioFaturamento from '@/components/RelatórioFaturamento';
 
 const DashboardPage = () => {
   const location = useLocation();
+  console.log("DashboardPage - Current location:", location.pathname);
   
   return (
     <SidebarProvider>

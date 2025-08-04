@@ -45,8 +45,8 @@ export function AppSidebar() {
       icon: BarChart3,
       items: [
         {
-          title: "Faturamento",
-          url: "/relatorios/faturamento",
+          title: "Faturamento por Serv",
+          url: "/dashboard/relatorios/faturamento",
         },
       ],
     },
@@ -70,7 +70,7 @@ export function AppSidebar() {
                     <Collapsible
                       key={item.title}
                       asChild
-                      defaultOpen={location.pathname.startsWith("/relatorios")}
+                      defaultOpen={location.pathname.startsWith("/dashboard/relatorios")}
                     >
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>

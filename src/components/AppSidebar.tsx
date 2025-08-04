@@ -24,9 +24,6 @@ import { useState } from "react";
 export function AppSidebar() {
   const location = useLocation();
   const [expandedMenus, setExpandedMenus] = useState<string[]>(['Relatórios']);
-  
-  console.log("AppSidebar - Current location:", location.pathname);
-  console.log("AppSidebar - Expanded menus:", expandedMenus);
 
   const toggleMenu = (title: string) => {
     setExpandedMenus(prev => 

@@ -5,7 +5,7 @@ const LoginPage = () => {
   const handleLogin = (email: string, password?: string) => {
     console.log('Login:', { email, password });
     // Redirecionar para o dashboard
-    window.location.href = 'https://simples-fiscal-brasil.lovable.app/';
+    window.location.href = '/dashboard';
   };
 
   return (

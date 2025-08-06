@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from '@/components/Dashboard';
 import RelatórioFaturamento from '@/components/RelatórioFaturamento';
+import GestaoDPS from '@/components/GestaoDPS';
 
 const DashboardPage = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const DashboardPage = () => {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/relatorios/faturamento" element={<RelatórioFaturamento />} />
+            <Route path="/gestao-dps/gerar" element={<GestaoDPS />} />
           </Routes>
         </main>
       </div>

@@ -3,7 +3,8 @@ import {
   Home, 
   PlusCircle, 
   Settings, 
-  ChevronRight 
+  ChevronRight,
+  FileText
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -23,7 +24,7 @@ import { useState } from "react";
 
 export function AppSidebar() {
   const location = useLocation();
-  const [expandedMenus, setExpandedMenus] = useState<string[]>(['Relatórios']);
+  const [expandedMenus, setExpandedMenus] = useState<string[]>(['Relatórios', 'Gestão de DPS']);
   
   console.log("AppSidebar - Current location:", location.pathname);
   console.log("AppSidebar - Expanded menus:", expandedMenus);
@@ -66,6 +67,16 @@ export function AppSidebar() {
         {
           title: "Obrigações Fiscais",
           url: "/dashboard/relatorios/obrigacoes-fiscais",
+        },
+      ],
+    },
+    {
+      title: "Gestão de DPS",
+      icon: FileText,
+      items: [
+        {
+          title: "Gerar DPS",
+          url: "/dashboard/gestao-dps/gerar",
         },
       ],
     },

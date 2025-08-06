@@ -76,7 +76,7 @@ export function AppSidebar() {
       items: [
         {
           title: "Gerar DPS",
-          url: "/dashboard/gestao-dps/gerar",
+          url: "/gestao-dps/gerar",
         },
       ],
     },

@@ -28,15 +28,17 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard/*" element={<DashboardPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/teste-gratis" element={<FreeTrialPage />} />
-            <Route path="/demonstracao" element={<DemoPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard/*" element={<DashboardPage />} />
+          <Route path="/gestao-dps/*" element={<DashboardPage />} />
+          <Route path="/relatorios/*" element={<DashboardPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/teste-gratis" element={<FreeTrialPage />} />
+          <Route path="/demonstracao" element={<DemoPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

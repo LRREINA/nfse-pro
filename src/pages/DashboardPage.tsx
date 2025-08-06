@@ -25,6 +25,8 @@ const DashboardPage = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/relatorios/faturamento" element={<RelatórioFaturamento />} />
             <Route path="/gestao-dps/gerar" element={<GestaoDPS />} />
+            <Route path="gestao-dps/gerar" element={<GestaoDPS />} />
+            <Route path="gestao-dps" element={<GestaoDPS />} />
           </Routes>
         </main>
       </div>
